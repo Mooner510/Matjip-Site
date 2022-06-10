@@ -6,6 +6,24 @@
     font-family: 'Noto Sans KR', sans-serif;
     text-decoration: none;
 }
+
+@keyframes visi {
+  0% {
+    height: 100vh;
+  }
+  100% {
+    height: 9vh;
+  }
+}
+@keyframes opa {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 header{
   text-align: center;
   background-repeat : no-repeat;
@@ -15,6 +33,7 @@ header{
   margin: 0 auto;
   background-position: center center;
   color: white;
+  transition: all 0.75s;
 }
 .menubutton{
     background: none;
