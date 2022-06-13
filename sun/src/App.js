@@ -70,7 +70,7 @@ function App() {
   ));
 
   return (
-    <body>
+    <>
       <header style={headerAni}>
         <div className="topbar">
           <button className="menubutton" onClick={animator} style={menubar}><img src={'/images/list.png'} alt="" style={{ height: 30 }} /></button>
@@ -82,10 +82,9 @@ function App() {
           <h1 className='txt'>맛집</h1>
           <h2 className='txt'>MATJIP</h2>
         </div>
-        
       </header>
       {query}
-    </body>
+    </>
   );
 }
 
