@@ -6,7 +6,7 @@ function Users(props) {
         <div className='matjip'>
             <div className='info'>
                 <div className='imgdiv'>
-                    <img src={props.imageLink} alt='' style={{width: '100%'}}/>
+                    <img src={props.imageLink} alt='' style={{height: '80%'}}/>
                 </div>
                 <div>
                     <h2>{props.title}</h2>
