@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Matjip-Site/static/css/main.b8f737d6.css",
+    "main.js": "/Matjip-Site/static/js/main.02ce0905.js",
+    "static/js/787.ceba0363.chunk.js": "/Matjip-Site/static/js/787.ceba0363.chunk.js",
+    "index.html": "/Matjip-Site/index.html",
+    "main.b8f737d6.css.map": "/Matjip-Site/static/css/main.b8f737d6.css.map",
+    "main.02ce0905.js.map": "/Matjip-Site/static/js/main.02ce0905.js.map",
+    "787.ceba0363.chunk.js.map": "/Matjip-Site/static/js/787.ceba0363.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b8f737d6.css",
+    "static/js/main.02ce0905.js"
+  ]
+}
