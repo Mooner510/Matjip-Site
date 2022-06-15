@@ -49,13 +49,6 @@ header{
     border: none;
     cursor: pointer;
 }
-.menubar{
-  position: absolute;
-  right: 0;
-  left: 0;
-  height: 100vh;
-  background-color: white;
-}
 .loginbutton{
     height: 40px;
     width: 80px;

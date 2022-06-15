@@ -9,9 +9,8 @@ function App() {
   const [users, setUsers] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [headerAni, setHeader] = useState({});
+  const [headerAni, setHeader] = useState({backgroundImage: "url(/images/backgroundimg.jpg)"});
   const [matjip, setMatjip] = useState({});
-  const [menubar, setMenu] = useState({});
 
   const reloads = (e) => {
     setState("/api/restaurant/search?matjip=" + e.target.value);
@@ -21,12 +20,6 @@ function App() {
     });
     setMatjip({
       animation: 'opa 0.5s forwards'
-    });
-  }
-
-  function animator() {
-    setMenu({
-      animation: 'menudown 0.5s forwards'
     });
   }
 
@@ -70,22 +63,20 @@ function App() {
   ));
 
   return (
-    <body>
+    <div className='back'>
       <header style={headerAni}>
         <div className="topbar">
-          <button className="menubutton" onClick={animator} style={menubar}><img src={'/images/list.png'} alt="" style={{ height: 30 }} /></button>
+          <button className="menubutton" onClick="#"><img src={'/images/list.png'} alt="" style={{ height: 30 }} /></button>
           <input type="text" placeholder='음식을 입력하세요' onKeyPress={reloads} />
           <a href="#top" onClick={reloads}><button className="loginbutton">검색</button></a>
         </div>
-        <div className='menubar'><button>맛집 추가 목록</button></div>
         <div className='Matjip' style={matjip}>
           <h1 className='txt'>맛집</h1>
           <h2 className='txt'>MATJIP</h2>
         </div>
-        
       </header>
       {query}
-    </body>
+    </div>
   );
 }
 
