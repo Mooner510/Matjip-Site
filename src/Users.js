@@ -3,6 +3,8 @@ import axios from 'axios';
 import Modal from './modal.js';
 import './Users.css'
 
+const url = process.env["REACT_APP_URL "];
+
 function Users(props) {
     const [res, setResource] = useState({});
     const [modalOpen, setModalOpen] = useState(false);
@@ -17,7 +19,7 @@ function Users(props) {
             'title': props.title
         }
         try {
-            setResource(await axios.post("/api/restaurant", headers));
+            setResource(await axios.post(`${url}/api/restaurant`, headers));
         } catch (error) {
             console.log(error);
             openModal();

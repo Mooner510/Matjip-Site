@@ -4,6 +4,7 @@ import Users from './Users.js';
 import './App.css';
 
 const a = process.env.REACT_APP_HOST;
+const url = process.env["REACT_APP_URL "];
 
 function App() {
   const [state, setState] = useState("");
