@@ -2,7 +2,7 @@
   "name": "matjip",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://10.156.147.167:8080",
+  "proxy": "https://c608-14-50-190-128.jp.ngrok.io",
   "secure": "false",
   "homepage": "https://mooner510.github.io/Matjip-Site",
   "dependencies": {

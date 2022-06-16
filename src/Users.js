@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import Modal from './modal';
+import Modal from './modal.js';
 import './Users.css'
 
 function Users(props) {
