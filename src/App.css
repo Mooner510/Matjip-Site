@@ -13,6 +13,7 @@
   }
   100% {
     height: 9vh;
+    display: none;
   }
 }
 @keyframes opa {
@@ -21,11 +22,12 @@
   }
   100% {
     opacity: 0;
+    display: none;
   }
 }
 @keyframes menudown {
   0% {
-    height: 0vh;
+    height: 0;
   }
   100% {
     height: 100vh;

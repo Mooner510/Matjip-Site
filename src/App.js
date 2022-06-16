@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Users from './Users.js'
+import Users from './Users.js';
 import './App.css';
+
+const a = process.env.REACT_APP_HOST;
 
 function App() {
   const [state, setState] = useState("");
@@ -9,17 +11,29 @@ function App() {
   const [users, setUsers] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [headerAni, setHeader] = useState({backgroundImage: "url(/images/backgroundimg.jpg)"});
+  const [headerAni, setHeader] = useState({backgroundImage: `url(${a}/images/backgroundimg.jpg)`});
   const [matjip, setMatjip] = useState({});
 
-  const reloads = (e) => {
+  const delay = ms => new Promise(
+    resolve => setTimeout(resolve, ms)
+  );
+
+  const reloads = async (e) => {
+    if(e.key !== 'Enter') return;
     setState("/api/restaurant/search?matjip=" + e.target.value);
     setHeader({
-      backgroundImage: "url(/images/backgroundimg.jpg)",
+      backgroundImage: `url(${a}/images/backgroundimg.jpg)`,
       animation: 'visi 0.5s forwards'
     });
     setMatjip({
       animation: 'opa 0.5s forwards'
+    });
+
+    await delay(500);
+
+    setMatjip({
+      animation: 'opa 0.5s forwards',
+      display: 'none'
     });
   }
 
@@ -66,9 +80,9 @@ function App() {
     <div className='back'>
       <header style={headerAni}>
         <div className="topbar">
-          <button className="menubutton" onClick="#"><img src={'/images/list.png'} alt="" style={{ height: 30 }} /></button>
+          <button className="menubutton"><img src={`${a}/images/list.png`} alt="" style={{ height: 30 }} /></button>
           <input type="text" placeholder='음식을 입력하세요' onKeyPress={reloads} />
-          <a href="#top" onClick={reloads}><button className="loginbutton">검색</button></a>
+          <a href={"#top"} onClick={reloads}><button className="loginbutton">검색</button></a>
         </div>
         <div className='Matjip' style={matjip}>
           <h1 className='txt'>맛집</h1>

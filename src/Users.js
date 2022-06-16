@@ -1,7 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
+import Modal from './modal';
 import './Users.css'
 
 function Users(props) {
+    const [res, setResource] = useState({});
+    const [modalOpen, setModalOpen] = useState(false);
+
+    const posting = async () => {
+        const headers = {
+            'address': props.address,
+            'category': props.category,
+            'homePageLink': props.homePageLink,
+            'imageLink': props.imageLink,
+            'roadAddress': props.roadAddress,
+            'title': props.title
+        }
+        try {
+            setResource(await axios.post("/api/restaurant", headers));
+        } catch (error) {
+            console.log(error);
+            openModal();
+        }
+    }
+
+    const openModal = () => {
+        setModalOpen(true);
+    };
+    const closeModal = () => {
+        setModalOpen(false);
+    };
+
     return(
         <div className='matjip'>
             <div className='info'>
@@ -15,7 +44,10 @@ function Users(props) {
                     <h4>{props.roadAddress}</h4>
                 </div>
             </div>
-            <button className='mjbutton'>맛집추가</button>
+            <button className='mjbutton' onClick={posting}>맛집추가</button>
+            <Modal open={modalOpen} close={closeModal} header="이미 등록됨!">
+                이미 등록된 값입니다!
+            </Modal>
         </div>
     )
     // const URL = `/api/restaurant/search?matjip=${props.matjip}`;
