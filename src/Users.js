@@ -1,25 +1,25 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Modal from './modal.js';
+import Map from './map.js';
 import './Users.css'
 
-const url = process.env["REACT_APP_URL "];
-
-function Users(props) {
-    const [res, setResource] = useState({});
+function Users({ address, category, homePageLink, imageLink, roadAddress, title }) {
+    const [, setResource] = useState(null);
     const [modalOpen, setModalOpen] = useState(false);
+    const [mapOpen, setMapOpen] = useState(false);
 
     const posting = async () => {
         const headers = {
-            'address': props.address,
-            'category': props.category,
-            'homePageLink': props.homePageLink,
-            'imageLink': props.imageLink,
-            'roadAddress': props.roadAddress,
-            'title': props.title
-        }
+            'address': address,
+            'category': category,
+            'homePageLink': homePageLink,
+            'imageLink': imageLink,
+            'roadAddress': roadAddress,
+            'title': title
+        };
         try {
-            setResource(await axios.post(`${url}/api/restaurant`, headers));
+            setResource((await axios.post(`/api/restaurant`, headers)).data);
         } catch (error) {
             console.log(error);
             openModal();
@@ -33,63 +33,37 @@ function Users(props) {
         setModalOpen(false);
     };
 
-    return(
-        <div className='matjip'>
-            <div className='info'>
-                <div className='imgdiv'>
-                    <img src={props.imageLink} alt='' style={{height: '80%'}}/>
+    const openMap = () => {
+        setMapOpen(true);
+    };
+    const closeMap = () => {
+        setMapOpen(false);
+    };
+
+    const id = Math.floor(Math.random() * 2100000000);
+
+    return (
+        <>
+            <div className='matjip'>
+                <div className='info'>
+                    <div className='imgdiv'>
+                        <img src={imageLink} alt='' style={{height: '80%'}}/>
+                    </div>
+                    <div className='meow'>
+                        <h2>{title}</h2>
+                        <h4>{category}</h4>
+                        <h4>{address}</h4>
+                        <h4>{roadAddress}</h4>
+                    </div>
                 </div>
-                <div>
-                    <h2>{props.title}</h2>
-                    <h4>{props.category}</h4>
-                    <h4>{props.address}</h4>
-                    <h4>{props.roadAddress}</h4>
-                </div>
+                <button className='mjbutton' onClick={posting}>맛집추가</button>
+                <button className='mjbutton' onClick={openMap}>지도 보기</button>
+                <Modal open={modalOpen} close={closeModal} header="이미 등록된 맛집입니다."></Modal>
+                <Map open={mapOpen} close={closeMap} location={address} locationName={title} id={id}></Map>
             </div>
-            <button className='mjbutton' onClick={posting}>맛집추가</button>
-            <Modal open={modalOpen} close={closeModal} header="이미 등록됨!">
-                이미 등록된 값입니다!
-            </Modal>
-        </div>
+            <div className='mapDivItems' id={`mapDiv-${id}`}></div>
+        </>
     )
-    // const URL = `/api/restaurant/search?matjip=${props.matjip}`;
-
-    // const [users, setUsers] = useState(null);
-    // const [loading, setLoading] = useState(false);
-    // const [error, setError] = useState(null);
-
-    // const fetchUsers = async () => {
-    //     try {
-    //         setError(null);
-    //         setUsers(null);
-    //         setLoading(true);
-    //         const response = await axios.get(URL, );
-    //         setUsers(response.data);
-    //     } catch (e) {
-    //         setError(e);
-    //         console.log(e);
-    //     }
-    //     setLoading(false);
-    // };
-
-    // useEffect(() => {
-    //     fetchUsers();
-    // }, []);
-
-    // if(loading) return <div>로딩중..</div>;
-    // if(error) return <div>에러가 발생했습니다</div>;
-    // if(!users) return null;
-    // return (
-    //     <ul>
-    //         {users.searchResult.map(user => (
-    //             <>
-    //                 <li>가게이름 : {user.title}</li>
-    //                 <li>카테고리 : {user.category}</li>
-    //                 <li>주소 : {user.address}</li>
-    //             </>
-    //         ))}
-    //     </ul>
-    // );
 }
 
 export default Users;

@@ -1,0 +1,105 @@
+.map {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 99;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+#map {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 400px;
+    padding: 6px 0;
+}
+
+.Maps {
+    z-index: -1;
+}
+
+.close {
+    z-index: 10;
+}
+
+.map button {
+    outline: none;
+    cursor: pointer;
+    border: 0;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    max-width: 400px;
+    max-height: 400px;
+    margin: 0 auto;
+    /*border-radius: 0.3rem;*/
+    background-color: #fff;
+    /* 팝업이 열릴때 스르륵 열리는 효과 */
+    animation: modal-show 0.3s;
+    overflow: hidden;
+}
+
+.map header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    width:400px;
+    color: rgb(43, 43, 43);
+    position: relative;
+    padding: 16px 64px 16px 16px;
+    background-color: #f5f5f5;
+    font-weight: 700;
+}
+
+.map header button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(43, 43, 43);
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 30px;
+    font-size: 21px;
+    font-weight: 700;
+    text-align: center;
+    background-color: transparent;
+}
+
+.map.openMap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* 팝업이 열릴때 스르륵 열리는 효과 */
+    animation: map-bg-show 0.3s;
+}
+
+@keyframes map-show {
+    from {
+        opacity: 0;
+        margin-top: -50px;
+    }
+    to {
+        opacity: 1;
+        margin-top: 0;
+    }
+}
+
+@keyframes map-bg-show {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
