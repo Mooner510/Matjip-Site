@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
-*{
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -8,7 +9,7 @@
     color: white;
 }
 
-.matjip{
+.matjip {
     display: flex;
     justify-content: space-between;
     padding: 10px;
@@ -18,12 +19,12 @@
     padding-top: 80px;
 }
 
-.info{
+.info {
     display: flex;
     width: 80%;
 }
 
-.mjbutton{
+.mjbutton {
     height: 50px;
     width: 150px;
     border: none;
@@ -35,21 +36,31 @@
     cursor: pointer;
 }
 
-.imgdiv{
+.imgdiv {
     width: 40%;
     margin-right: 8%;
     text-align: center;
 }
 
-h2{
+.meow h2 {
     font-size: 50px;
     margin-bottom: 20px;
 }
 
-h4{
+.meow h4 {
     font-size: 20px;
 }
 
-img{
+.imgdiv img {
     border-radius: 10px;
 }
+
+.mapDivItems {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*.mapDivItems section{*/
+/*    width: 100%;*/
+/*}*/

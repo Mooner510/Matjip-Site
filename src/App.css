@@ -1,55 +1,66 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
-*{
+@import url('https://fonts.googleapis.com/css2?family=Inria+Serif:wght@300&display=swap');
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Noto Sans KR', sans-serif;
     text-decoration: none;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
 }
 
 @keyframes visi {
-  0% {
-    height: 100vh;
-  }
-  100% {
-    height: 9vh;
-    display: none;
-  }
-}
-@keyframes opa {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-    display: none;
-  }
-}
-@keyframes menudown {
-  0% {
-    height: 0;
-  }
-  100% {
-    height: 100vh;
-  }
+    0% {
+        height: 100vh;
+    }
+    100% {
+        height: 9vh;
+        display: none;
+    }
 }
 
-header{
-  text-align: center;
-  background-repeat : no-repeat;
-  background-size : cover;
-  width: 100%;
-  height: 100vh;
-  margin: 0 auto;
-  background-position: center center;
-  color: white;
-  transition: all 0.75s;
+@keyframes opa {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        display: none;
+    }
 }
-.menubutton{
-    background: none;
-    margin-left: 10px;
-    border: none;
-    cursor: pointer;
+
+@keyframes menudown {
+    0% {
+        height: 0;
+    }
+    100% {
+        height: 100vh;
+    }
+}
+
+header {
+    text-align: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 110vh;
+    margin: 0 auto;
+    background-position: center center;
+    color: white;
+}
+
+.backgroundimg{
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100vh;
+    background-position: center center;
+    filter: blur(6px);
+    transition: 2s;
 }
 
 .loginbutton {
@@ -70,13 +81,17 @@ header{
     cursor: pointer;
 }
 
-input{
-    background-color: rgb(222, 222, 222);
+input {
+    width: 612px;
+    height: 50px;
+    background: #FFFFFF;
+    border-radius: 12px;
     padding-left: 30px;
     color: black;
     border: none;
 }
-input:focus{
+
+input:focus {
     outline: none;
 }
 
@@ -88,24 +103,42 @@ input:focus{
     background: #FFFFFF;
 }
 
-.topbar{
-    background-color: white;
-    height: 10vh;
+.topbar {
+    position: absolute;
+    height: 101px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.39) 0%, rgba(0, 0, 0, 0) 100%);
     display: flex;
     justify-content: space-between;
     padding: 20px;
     align-items: center;
     width: 100%;
+    z-index: 1;
 }
 
-.Matjip{
-  text-align: start;
-  height: 100%;
+.top {
+    z-index: 3;
 }
-.txt{
-  font-size: 80px;
-  margin-top: 40px;
-  margin-left: 50px;
+
+.Matjip {
+    text-align: start;
+    height: 100%;
+    width: 100%;
+}
+
+.txt1 {
+    position: absolute;
+    width: 50%;
+    height: 153px;
+    left: 114px;
+    top: 32%;
+    font-family: 'Inria Serif', serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 128px;
+    line-height: 153px;
+    letter-spacing: 10px;
+
+    color: #FFFFFF;
 }
 
 .box{

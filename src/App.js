@@ -2,6 +2,7 @@ import React, {useEffect, useState, useRef} from 'react';
 import axios from 'axios';
 import Users from './Users.js';
 import './App.css';
+import Menu from './menu.js';
 
 const a = process.env.REACT_APP_HOST;
 
@@ -17,28 +18,18 @@ function App() {
     const [viewAll, setViewAll] = useState(false);
     const [imageN, setImageN] = useState(1);
 
-  const delay = ms => new Promise(
-    resolve => setTimeout(resolve, ms)
-  );
+    // const delay = ms => new Promise( // delay
+    //     resolve => setTimeout(resolve, ms)
+    // );
 
-  const reloads = async (e) => {
-    if(e.key !== 'Enter') return;
-    setState("/api/restaurant/search?matjip=" + e.target.value);
-    setHeader({
-      backgroundImage: `url(${a}/images/backgroundimg.jpg)`,
-      animation: 'visi 0.5s forwards'
-    });
-    setMatjip({
-      animation: 'opa 0.5s forwards'
-    });
+    function slideShow() {
+        setImageN(imageN >= 6 ? 1 : imageN + 1);
+    }
 
-    await delay(500);
-
-    setMatjip({
-      animation: 'opa 0.5s forwards',
-      display: 'none'
-    });
-  }
+    const reloads = async (e) => { // press enter
+        if (e.key !== 'Enter') return;
+        setState(`/api/restaurant/search?matjip=${e.target.value}`);
+    }
 
     const fetchUsers = async () => { // user get
         try {
@@ -120,23 +111,36 @@ function App() {
         ));
 
 
-
-  return (
-    <div className='back'>
-      <header style={headerAni}>
-        <div className="topbar">
-          <button className="menubutton"><img src={`${a}/images/list.png`} alt="" style={{ height: 30 }} /></button>
-          <input type="text" placeholder='음식을 입력하세요' onKeyPress={reloads} />
-          <a href={"#top"} onClick={reloads}><button className="loginbutton">검색</button></a>
+    return (
+        <div className='back'>
+            <header>
+                <div>
+                    <div className="topbar">
+                        <Menu DB={queryDB}/>
+                        <input className="top" type="text" placeholder='음식을 입력하세요' onKeyPress={reloads}/>
+                        <a className="top" href={"#top"}>
+                            <button className="loginbutton">Login</button>
+                            <div className="outprofile"></div>
+                            <div className="inprofile"></div>
+                        </a>
+                    </div>
+                </div>
+                <div className="backgroundimg"
+                     style={{backgroundImage: `url(${a}/images/backgroundimg${imageN}.jpg)`}}></div>
+                <div className='Matjip'>
+                    <h1 className='txt1'>MATJIP</h1>
+                    <div className="box"></div>
+                    <h2 className='txt2'>Find<br/>good restaurant</h2>
+                </div>
+                <div className="spacediv"></div>
+                <div>
+                    <button onClick={onView}>testbutton</button>
+                </div>
+            </header>
+            {query}
+            {queryDB}
         </div>
-        <div className='Matjip' style={matjip}>
-          <h1 className='txt'>맛집</h1>
-          <h2 className='txt'>MATJIP</h2>
-        </div>
-      </header>
-      {query}
-    </div>
-  );
+    );
 }
 
 export default App;
