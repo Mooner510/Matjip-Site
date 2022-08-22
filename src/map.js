@@ -1,22 +1,16 @@
 /* global kakao */
-import React, {useEffect, useState} from 'react';
-import {createRoot} from 'react-dom/client';
+import React, {useEffect} from 'react';
 // import './map.css';
 import './map.css';
-import cn from "classnames";
-import parse from 'html-react-parser'
-import useScript from "./hooks/useScript";
-import qe from "styled-components";
 
 const Map = (props) => {
     // useScript('//dapi.kakao.com/v2/maps/sdk.js?appkey=1f4de50d882f10886593744bd31f81c4');
 
     // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
     const {open, close, location, locationName, id} = props;
-    const [divData, setDivData] = useState("");
 
     // const [mapData, setMapData] = useState(null);
-    var section, header, button, textNode, container;
+    let section, header, button, textNode, container;
     useEffect(() => {
         section = document.createElement("section");
         header = document.createElement("header");
